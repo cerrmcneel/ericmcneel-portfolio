@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PanelSafe Case Study | Eric McNeel Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Specific page additions */
+        body {
+            font-family: var(--font-body);
+        }
+        .container-narrow {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+        h1.title {
+            font-size: 3rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem 0;
+            margin: 2rem 0 3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .rich-content h2 {
+            font-size: 1.75rem;
+            margin: 3rem 0 1.25rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+        .rich-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .rich-content ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+        .rich-content li {
+            margin-bottom: 0.5rem;
+        }
+        /* Code styling */
+        pre {
+            background: #141721;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0 2rem;
+        }
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e2230;
+            border: 1px solid var(--glass-border);
+            border-bottom: none;
+            padding: 0.5rem 1rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            font-family: 'Fira Code', monospace;
+        }
+        .code-header + pre {
+            margin-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .alert-box {
+            background: rgba(79, 70, 229, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+        .alert-box h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+        .alert-box p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Eric McNeel<span class="logo-dot"></span></div>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-narrow">
+        <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
+        
+        <h1 class="title">PanelSafe: Small Object Detection & Automated Audits</h1>
+        <p class="hero-subtext">Optimizing YOLOv8 with SAHI for electrical breaker panels and deploying containerized inference services.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <strong>Role</strong>
+                ML Engineer, DevOps & Lead Architect
+            </div>
+            <div class="meta-item">
+                <strong>Stack</strong>
+                Python, YOLOv8, SAHI, OpenCV, Docker
+            </div>
+            <div class="meta-item">
+                <strong>Timeline</strong>
+                July 2025 - July 2026 (Commercial Launch)
+            </div>
+        </div>
+
+        <div class="rich-content">
+            <h2>1. The Engineering Challenge</h2>
+            <p>During electrical audits, electricians manually verify and document the states of breakers inside electrical protection boards. This is tedious, error-prone, and poses safety risks. PanelSafe replaces this workflow with image-based recognition. However, breaker boards present a dense matrix of very small, repeating switches. Standard object detection algorithms struggle to localize tiny, identical components on high-resolution parent images.</p>
+            
+            <div class="alert-box">
+                <h4>Domain Generalization Gap</h4>
+                <p>While models performed exceptionally well on clean test datasets, real-world deployment introduced "domain drift." In the field, panels are often unboxed (exposing messy wires), switches are dusty, and panel markings are handwritten. To achieve commercial robustness, the data pipeline had to adapt.</p>
+            </div>
+
+            <h2>2. Slicing Aided Inference (SAHI)</h2>
+            <p>To detect tiny objects without losing context, we combined **YOLOv8** with **SAHI**. SAHI slices the input image into overlapping windows during inference, performs classification, and merges the results using Non-Maximum Suppression (NMS).</p>
+
+            <div class="code-header">inference_pipeline.py</div>
+            <pre><code>from sahi import AutoDetectionModel
+from sahi.predict import get_sliced_prediction
+
+# Load YOLO model inside SAHI helper
+detection_model = AutoDetectionModel(
+    model_type='yolov8',
+    model_path='models/panelsafe_yolov8x.pt',
+    confidence_threshold=0.45,
+    device='cpu' # CPU standard, GPU optimized
+)
+
+# Run sliced inference on 4K panel image
+prediction = get_sliced_prediction(
+    image="images/board_field_12.jpg",
+    detection_model=detection_model,
+    slice_height=640,
+    slice_width=640,
+    overlap_height_ratio=0.2,
+    overlap_width_ratio=0.2
+)
+
+# Export visual coordinates
+prediction.export_visuals(export_dir="predictions/")</code></pre>
+
+            <h2>3. Synthetic Data Engineering</h2>
+            <p>With only 80+ high-resolution physical images, training a deep neural network was susceptible to overfitting. We built a custom synthetic pipeline that crops individual breakers, generates alpha masks, and pastes them in random configurations on various electrical panel backgrounds, expanding the training library by 10x.</p>
+
+            <h2>4. DevOps & Containerized Deployment</h2>
+            <p>To demonstrate production-grade reliability, the PanelSafe inference API is containerized using **Docker** and deployed as a microservice. A local CI/CD pipeline runs unit tests, verifies linting compliance, and pushes the built container.</p>
+
+            <div class="code-header">Dockerfile</div>
+            <pre><code>FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install system utilities for OpenCV
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY src/ ./src/
+COPY models/ ./models/
+
+EXPOSE 8000
+
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]</code></pre>
+
+            <div class="code-header">.github/workflows/deploy.yml</div>
+            <pre><code>name: Build and Deploy Inference Service
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Linting & Testing Libraries
+        run: |
+          pip install flake8 pytest
+          pip install -r requirements.txt
+
+      - name: Lint Python Code
+        run: flake8 src/
+
+      - name: Run Unit Tests
+        run: pytest tests/
+
+  build-container:
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t panelsafe-inference:latest .</code></pre>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026. Built by Eric McNeel — Technical Founder & Systems Builder.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>electromarjal.com Case Study | Eric McNeel Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Specific page additions */
+        body {
+            font-family: var(--font-body);
+        }
+        .container-narrow {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+        h1.title {
+            font-size: 3rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem 0;
+            margin: 2rem 0 3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .rich-content h2 {
+            font-size: 1.75rem;
+            margin: 3rem 0 1.25rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+        .rich-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .rich-content ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+        .rich-content li {
+            margin-bottom: 0.5rem;
+        }
+        /* Code styling */
+        pre {
+            background: #141721;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0 2rem;
+        }
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e2230;
+            border: 1px solid var(--glass-border);
+            border-bottom: none;
+            padding: 0.5rem 1rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            font-family: 'Fira Code', monospace;
+        }
+        .code-header + pre {
+            margin-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .alert-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid var(--accent-green);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+        .alert-box h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+        .alert-box p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Eric McNeel<span class="logo-dot"></span></div>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-narrow">
+        <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
+        
+        <h1 class="title">electromarjal.com: High-End Solar & Electrical Platform</h1>
+        <p class="hero-subtext">Architecting a multi-lingual, high-performance customer conversion portal for a premium electrical services provider in Spain.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <strong>Role</strong>
+                Full Stack Developer & Owner
+            </div>
+            <div class="meta-item">
+                <strong>Stack</strong>
+                HTML5, CSS3, JavaScript (Vanilla), JSON-LD, Docker
+            </div>
+            <div class="meta-item">
+                <strong>Target Audience</strong>
+                Spanish Locals, English Expats, French Retirees
+            </div>
+        </div>
+
+        <div class="rich-content">
+            <h2>1. Business Context & Engineering Challenge</h2>
+            <p>To support the transition from Sole Proprietorship (Autónomo) to a Limited Company (S.L.) structure, Marjal Instalaciones Eléctricas required a digital presence matching its high-end physical services. The target region (the Maestrat comarca: Peñíscola, Benicarló, Vinaròs) is uniquely multi-demographic, requiring seamless Spanish (ES), English (EN), and French (FR) availability to convert residential owners, foreign property investors, and French-speaking retirees.</p>
+            
+            <div class="alert-box">
+                <h4>Strict REBT & Local Regulatory Context</h4>
+                <p>Electrical safety documentation in Spain requires strict adherence to REBT (Reglamento Electrotécnico para Baja Tensión) regulations. Highlighting official certifications (such as Boletines CIE) with clear fixed pricing structures was crucial to building instant consumer trust online.</p>
+            </div>
+
+            <h2>2. Multi-Lingual Architecture & Local SEO</h2>
+            <p>To minimize hosting overhead and maximize page-speed scores for mobile-first users in low-connectivity areas, we selected a clean semantic framework over bloated client-side JavaScript frameworks. We structured multi-lingual pages using static subdirectory routing (e.g. <code>/en/index.html</code>) to ensure clean crawler indexes.</p>
+            <p>To capture local Google Search visibility, we embedded custom Schema.org metadata using JSON-LD. This explicitly defines the physical address, geo-coordinates, operating hours, and area served, telling search engines precisely when and where the services operate.</p>
+
+            <div class="code-header">Structured Data (index.html)</div>
+            <pre><code>{
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  "name": "Marjal Instalaciones Eléctricas SL",
+  "telephone": "+34 684 17 31 15",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Zona Maestrat",
+    "addressLocality": "Peñíscola",
+    "addressRegion": "Castellón",
+    "postalCode": "12598",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.3582,
+    "longitude": 0.4069
+  }
+}</code></pre>
+
+            <h2>3. Interactive Solar Savings Estimator Wizard</h2>
+            <p>To capture premium solar leads, we built a step-by-step wizard. Users slide their average monthly electricity bill, select their roofing type, and receive a real-time technical estimate. Instead of forcing database interactions, the calculator performs instant client-side math and serializes user details into formatted emails.</p>
+
+            <div class="code-header">calculator_logic.js</div>
+            <pre><code>// Solar Calculation Coefficients based on average solar irradiance in Castellón
+const AVERAGE_PEAK_SUN_HOURS = 4.6; // hours/day in East Coast Spain
+const SYSTEM_EFFICIENCY_LOSS = 0.82; // 18% standard system loss
+
+function calculateSolarOutput(monthlyBill) {
+    // 1. Est. Monthly consumption in kWh (assuming average price of 0.20€/kWh)
+    const monthlyKwh = monthlyBill / 0.20;
+    const dailyKwhTarget = (monthlyKwh / 30) * 0.70; // Target covering 70% daytime load
+    
+    // 2. Required system size in kWp
+    const requiredKwp = dailyKwhTarget / (AVERAGE_PEAK_SUN_HOURS * SYSTEM_EFFICIENCY_LOSS);
+    
+    // 3. Number of standard panels (assuming 450Wp per panel)
+    const numPanels = Math.ceil((requiredKwp * 1000) / 450);
+    
+    // 4. Payback period estimate (assuming standard installation costs)
+    const estimatedCost = numPanels * 750 + 1500; // 750€ per panel + inverter/labor setup
+    const annualSavings = (monthlyKwh * 12 * 0.70) * 0.20; // 70% bill reduction
+    const paybackYears = (estimatedCost / annualSavings).toFixed(1);
+    
+    return {
+        kWp: requiredKwp.toFixed(2),
+        panels: numPanels,
+        cost: estimatedCost,
+        payback: paybackYears
+    };
+}</code></pre>
+
+            <h2>4. Containerized Web Hosting</h2>
+            <p>For hosting robustness, the site, assets, and calculator utilities are containerized using **Docker** and proxy-routed via an Nginx service. This setup is managed through <code>docker-compose</code> on the local platform, matching the infrastructure configuration used in PanelSafe's deployment.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026. Built by Eric McNeel — Technical Founder & Systems Builder.</p>
+    </footer>
+</body>
+</html>
