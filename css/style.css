@@ -16,6 +16,10 @@
 
     --accent-red: #ef4444;
     --accent-red-glow: rgba(239, 68, 68, 0.15);
+
+    --accent-amber: #f59e0b;
+    --accent-amber-hover: #d97706;
+    --accent-amber-glow: rgba(245, 158, 11, 0.15);
     
     --text-primary: #f3f4f6;
     --text-secondary: #a1a1aa;
@@ -266,6 +270,12 @@ nav a.active::after {
     color: #6ee7b7;
 }
 
+.badge.amber {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+    color: #fcd34d;
+}
+
 .hero-section h1 {
     font-size: 4rem;
     line-height: 1.1;
@@ -346,7 +356,10 @@ nav a.active::after {
    ========================================== */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* auto-fit rather than a fixed 2 columns: fits 3 cards across at desktop
+       width and reflows to 2 (then 1, via the mobile breakpoint below) as the
+       viewport narrows, so adding a further card needs no CSS change. */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
 }
 
@@ -382,6 +395,10 @@ nav a.active::after {
     background: linear-gradient(90deg, var(--accent-green), transparent);
 }
 
+.project-card.amber::before {
+    background: linear-gradient(90deg, var(--accent-amber), transparent);
+}
+
 .project-card:hover {
     transform: translateY(-6px);
     border-color: var(--glass-border-hover);
@@ -394,6 +411,10 @@ nav a.active::after {
 
 .project-card.green:hover {
     box-shadow: 0 20px 40px rgba(16, 185, 129, 0.07);
+}
+
+.project-card.amber:hover {
+    box-shadow: 0 20px 40px rgba(245, 158, 11, 0.07);
 }
 
 .project-header {
@@ -459,6 +480,10 @@ nav a.active::after {
     border-color: rgba(16, 185, 129, 0.2);
 }
 
+.project-card.amber:hover .tag-list li {
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
 .project-footer {
     display: flex;
     justify-content: space-between;
@@ -481,12 +506,20 @@ nav a.active::after {
     color: #34d399;
 }
 
+.project-card.amber .project-link {
+    color: #fbbf24;
+}
+
 .project-card.purple .project-link:hover {
     color: #a5b4fc;
 }
 
 .project-card.green .project-link:hover {
     color: #6ee7b7;
+}
+
+.project-card.amber .project-link:hover {
+    color: #fcd34d;
 }
 
 /* ==========================================
