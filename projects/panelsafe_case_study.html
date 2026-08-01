@@ -145,7 +145,7 @@
         <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
         
         <h1 class="title">PanelSafe: Small Object Detection & Automated Audits</h1>
-        <p class="hero-subtext">Optimizing YOLOv8 with SAHI for electrical breaker panels and deploying containerized inference services.</p>
+        <p class="hero-subtext">Root-causing a silent label-ordering bug, correcting detections with an HMM sequence decoder, and deploying containerized GPU inference.</p>
 
         <div class="meta-grid">
             <div class="meta-item">
@@ -154,7 +154,7 @@
             </div>
             <div class="meta-item">
                 <strong>Stack</strong>
-                Python, YOLOv8, SAHI, OpenCV, Docker
+                Python, YOLOv8, PyTorch, OpenCV, Docker
             </div>
             <div class="meta-item">
                 <strong>Timeline</strong>
@@ -171,39 +171,37 @@
                 <p>While models performed exceptionally well on clean test datasets, real-world deployment introduced "domain drift." In the field, panels are often unboxed (exposing messy wires), switches are dusty, and panel markings are handwritten. To achieve commercial robustness, the data pipeline had to adapt.</p>
             </div>
 
-            <h2>2. Slicing Aided Inference (SAHI)</h2>
-            <p>To detect tiny objects without losing context, we combined **YOLOv8** with **SAHI**. SAHI slices the input image into overlapping windows during inference, performs classification, and merges the results using Non-Maximum Suppression (NMS).</p>
+            <h2>2. The 92% That Meant Nothing</h2>
+            <p>The model scored <strong>92%</strong> on real-world validation images and was visibly wrong in the field — confidently calling differentials MCBs and vice versa. The intuitive reading was a resolution problem: tiny, near-identical objects on a high-resolution image. So the first fix attempted was slicing-aided inference, tiling the panel into overlapping windows and merging with NMS.</p>
 
-            <div class="code-header">inference_pipeline.py</div>
-            <pre><code>from sahi import AutoDetectionModel
-from sahi.predict import get_sliced_prediction
+            <p>It didn't help, because the premise was wrong. The real cause was that the annotation tool wrote its class indices from a <code>classes.txt</code> whose ordering disagreed with the <code>data.yaml</code> the training run read. Every hand-labelled real image was permuted — not a simple two-class swap, but a full six-class rotation. The model had faithfully learned the permutation.</p>
 
-# Load YOLO model inside SAHI helper
-detection_model = AutoDetectionModel(
-    model_type='yolov8',
-    model_path='models/panelsafe_yolov8x.pt',
-    confidence_threshold=0.45,
-    device='cpu' # CPU standard, GPU optimized
-)
+            <div class="code-header">label_remap.py</div>
+            <pre><code># What the annotation tool wrote vs. what training actually read
+CLASSES_TXT = ["RCD", "MCB", "MAINBREAKER", "OVERSURGE", "OTHER", "RCD_SI"]
+DATA_YAML   = ["MCB", "RCD", "RCD_SI", "MAINBREAKER", "OVERSURGE", "OTHER"]
 
-# Run sliced inference on 4K panel image
-prediction = get_sliced_prediction(
-    image="images/board_field_12.jpg",
-    detection_model=detection_model,
-    slice_height=640,
-    slice_width=640,
-    overlap_height_ratio=0.2,
-    overlap_width_ratio=0.2
-)
+# Every real annotation had to be rewritten through this map
+REMAP = {written: DATA_YAML.index(name)
+         for written, name in enumerate(CLASSES_TXT)}
+# -> {0: 1, 1: 0, 2: 3, 3: 4, 4: 5, 5: 2}
 
-# Export visual coordinates
-prediction.export_visuals(export_dir="predictions/")</code></pre>
+# Synthetic labels were generated programmatically against data.yaml,
+# so they were correct all along -- which is exactly why the bug hid:
+# the corrupted subset was small enough to look like ordinary noise.</code></pre>
+
+            <p>Scored against corrected labels, that same 92% became roughly <strong>6%</strong>. The metric had never measured accuracy; it measured agreement with a broken ground truth.</p>
+
+            <div class="alert-box">
+                <h4>The Ablation That Removed My Own Work</h4>
+                <p>With the labels fixed, the slicing optimisation was re-run as a controlled ablation rather than assumed to help. It measurably <em>reduced</em> accuracy, so it was cut from the production pipeline. The dependency is still listed in <code>requirements.txt</code>, annotated with why it is deliberately unused — so nobody, including a future me, re-adds it on intuition without re-running the experiment.</p>
+            </div>
 
             <h2>3. Synthetic Data Engineering</h2>
             <p>With only 80+ high-resolution physical images, training a deep neural network was susceptible to overfitting. We built a custom synthetic pipeline that crops individual breakers, generates alpha masks, and pastes them in random configurations on various electrical panel backgrounds, expanding the training library by 10x.</p>
 
             <h2>4. DevOps & Containerized Deployment</h2>
-            <p>To demonstrate production-grade reliability, the PanelSafe inference API is containerized using **Docker** and deployed as a microservice. A local CI/CD pipeline runs unit tests, verifies linting compliance, and pushes the built container.</p>
+            <p>To demonstrate production-grade reliability, the PanelSafe inference API is containerized using <strong>Docker</strong> and deployed as a microservice. A local CI/CD pipeline runs unit tests, verifies linting compliance, and pushes the built container.</p>
 
             <div class="code-header">Dockerfile</div>
             <pre><code>FROM python:3.10-slim
