@@ -1,218 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PanelSafe Case Study | Eric McNeel Portfolio</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Specific page additions */
-        body {
-            font-family: var(--font-body);
-        }
-        .container-narrow {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            transition: color 0.3s;
-        }
-        .back-link:hover {
-            color: var(--text-primary);
-        }
-        h1.title {
-            font-size: 3rem;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .meta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1.5rem 0;
-            margin: 2rem 0 3rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .meta-item strong {
-            display: block;
-            color: var(--text-primary);
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-        .rich-content h2 {
-            font-size: 1.75rem;
-            margin: 3rem 0 1.25rem;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 0.5rem;
-        }
-        .rich-content p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        .rich-content ul {
-            list-style-position: inside;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-        }
-        .rich-content li {
-            margin-bottom: 0.5rem;
-        }
-        /* Code styling */
-        pre {
-            background: #141721;
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 1.5rem 0 2rem;
-        }
-        code {
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-        }
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #1e2230;
-            border: 1px solid var(--glass-border);
-            border-bottom: none;
-            padding: 0.5rem 1rem;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 1.5rem;
-            font-family: 'Fira Code', monospace;
-        }
-        .code-header + pre {
-            margin-top: 0;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-        .alert-box {
-            background: rgba(79, 70, 229, 0.05);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin: 2rem 0;
-        }
-        .alert-box h4 {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-family: var(--font-heading);
-        }
-        .alert-box p {
-            margin-bottom: 0;
-            font-size: 0.95rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PanelSafe — Eric McNeel</title>
+
+<meta name="description" content="A breaker detection pipeline, the class-index bug that made a 92% score meaningless, and the ablation that removed the optimisation everyone reaches for first.">
+<meta name="author" content="Eric McNeel">
+<link rel="canonical" href="https://ericmcneel.com/projects/panelsafe_case_study.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="PanelSafe: what a 92% score was actually measuring">
+<meta property="og:description" content="A breaker detection pipeline, the class-index bug that made a 92% score meaningless, and the ablation that removed my own work.">
+<meta property="og:image" content="https://ericmcneel.com/assets/projects/panelsafe-detection-field.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Eric McNeel<span class="logo-dot"></span></div>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#projects">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="container-narrow">
-        <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
-        
-        <h1 class="title">PanelSafe: Small Object Detection & Automated Audits</h1>
-        <p class="hero-subtext">Root-causing a silent label-ordering bug, correcting detections with an HMM sequence decoder, and deploying containerized GPU inference.</p>
+<a class="skip" href="#main">Skip to content</a>
 
-        <div class="meta-grid">
-            <div class="meta-item">
-                <strong>Role</strong>
-                ML Engineer, DevOps & Lead Architect
-            </div>
-            <div class="meta-item">
-                <strong>Stack</strong>
-                Python, YOLOv8, PyTorch, OpenCV, Docker
-            </div>
-            <div class="meta-item">
-                <strong>Timeline</strong>
-                July 2025 - July 2026 (Commercial Launch)
+<header class="masthead">
+    <a class="wordmark" href="../index.html">&#8592;&#8195;Eric McNeel</a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav">Index</button>
+    <nav class="nav" id="nav">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="nav__cv" href="mailto:ericmcneel@gmail.com?subject=CV%20request">CV &#8599;</a>
+    </nav>
+</header>
+<hr class="rule">
+
+<main id="main">
+
+    <!-- ==================== DOCUMENT HEAD ==================== -->
+    <article class="row row--doc doc-head">
+        <div><span class="desig">01</span></div>
+        <div>
+            <p class="label">Case study</p>
+            <h1>PanelSafe: what a 92% score was actually measuring</h1>
+            <p class="doc-head__sub">A detection pipeline for electrical panel audits, the silent label-ordering bug that made its headline metric meaningless, and the controlled ablation that deleted my own optimisation.</p>
+        </div>
+        <div>
+            <div class="spec spec--head">
+                <div class="spec__row">
+                    <div class="spec__key">Role</div>
+                    <div class="spec__val">Sole engineer &#8212; ML, DevOps, architecture</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Period</div>
+                    <div class="spec__val">July 2025 &#8212; ongoing</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Stack</div>
+                    <div class="spec__val">Python &#183; YOLOv8 &#183; PyTorch &#183; OpenCV &#183; Docker &#183; Kubernetes &#183; Proxmox</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Status</div>
+                    <div class="spec__val spec__val--status">Field calibration</div>
+                </div>
             </div>
         </div>
+    </article>
 
-        <div class="rich-content">
-            <h2>1. The Engineering Challenge</h2>
-            <p>During electrical audits, electricians manually verify and document the states of breakers inside electrical protection boards. This is tedious, error-prone, and poses safety risks. PanelSafe replaces this workflow with image-based recognition. However, breaker boards present a dense matrix of very small, repeating switches. Standard object detection algorithms struggle to localize tiny, identical components on high-resolution parent images.</p>
-            
-            <div class="alert-box">
-                <h4>Domain Generalization Gap</h4>
-                <p>While models performed exceptionally well on clean test datasets, real-world deployment introduced "domain drift." In the field, panels are often unboxed (exposing messy wires), switches are dusty, and panel markings are handwritten. To achieve commercial robustness, the data pipeline had to adapt.</p>
+    <hr class="rule--hair">
+
+    <!-- ==================== 1.0 ==================== -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">1.0</span></div>
+        <div>
+            <h2>The bottleneck is documentation, not diagnosis</h2>
+            <p>Auditing a consumer unit is not hard for a qualified electrician. Documenting it is. Every inspection means photographing the board, identifying each protective device by type and rating, transcribing it, and producing a single-line diagram that matches. On a working day that is twenty minutes of clerical work per panel, done on a phone, in a hallway, in bad light.</p>
+            <p>I was the person doing it. That is the only reason this project has a defensible dataset: I had the access, and I knew what each device was without guessing.</p>
+        </div>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Remark</div>
+                <p>Domain access is the moat. A general-purpose CV engineer cannot obtain eighty photographs of live Spanish consumer units, and could not label them correctly if they did.</p>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ==================== FIGURE 01 ==================== -->
+    <section class="row row--doc row--fig">
+        <div></div>
+        <figure class="fig">
+            <div class="fig__frame fig__frame--plate">
+                <img src="../assets/projects/panelsafe-detection-field.jpg" width="927" height="694" alt="Field photograph of a residential consumer unit with bounding boxes drawn over one FISO residual-current device and four MEDEX miniature circuit breakers">
             </div>
+            <figcaption class="fig__cap">Fig. 01 &#8212; Inference on a field capture. One FISO 40/2 RCD and four MEDEX MCBs, correctly separated despite adjacency and surface staining.</figcaption>
+        </figure>
+        <div></div>
+    </section>
 
-            <h2>2. The 92% That Meant Nothing</h2>
-            <p>The model scored <strong>92%</strong> on real-world validation images and was visibly wrong in the field — confidently calling differentials MCBs and vice versa. The intuitive reading was a resolution problem: tiny, near-identical objects on a high-resolution image. So the first fix attempted was slicing-aided inference, tiling the panel into overlapping windows and merging with NMS.</p>
+    <!-- ==================== 2.0 ==================== -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">2.0</span></div>
+        <div>
+            <h2>The 92% that meant nothing</h2>
+            <p>The model scored 92% on real-world validation images and was visibly wrong in the field, confidently calling differentials MCBs and MCBs differentials. The intuitive reading was resolution: tiny, near-identical objects on a high-resolution image. So the first fix attempted was slicing-aided inference &#8212; tiling the panel into overlapping windows, running detection per tile, merging with NMS.</p>
+            <p>It did not help, because the premise was wrong. The real cause was that the annotation tool wrote its class indices from a <code>classes.txt</code> whose ordering disagreed with the <code>data.yaml</code> the training run read. Every hand-labelled real image was permuted &#8212; not a two-class swap, but a full six-class rotation. The model had faithfully learned the permutation.</p>
 
-            <p>It didn't help, because the premise was wrong. The real cause was that the annotation tool wrote its class indices from a <code>classes.txt</code> whose ordering disagreed with the <code>data.yaml</code> the training run read. Every hand-labelled real image was permuted — not a simple two-class swap, but a full six-class rotation. The model had faithfully learned the permutation.</p>
+            <div class="listing">
+                <div class="listing__name">label_remap.py</div>
+<pre><span class="cm"># What the annotation tool wrote vs. what training actually read</span>
+CLASSES_TXT = [<span class="cm">"RCD"</span>, <span class="cm">"MCB"</span>, <span class="cm">"MAINBREAKER"</span>, <span class="cm">"OVERSURGE"</span>, <span class="cm">"OTHER"</span>, <span class="cm">"RCD_SI"</span>]
+DATA_YAML   = [<span class="cm">"MCB"</span>, <span class="cm">"RCD"</span>, <span class="cm">"RCD_SI"</span>, <span class="cm">"MAINBREAKER"</span>, <span class="cm">"OVERSURGE"</span>, <span class="cm">"OTHER"</span>]
 
-            <div class="code-header">label_remap.py</div>
-            <pre><code># What the annotation tool wrote vs. what training actually read
-CLASSES_TXT = ["RCD", "MCB", "MAINBREAKER", "OVERSURGE", "OTHER", "RCD_SI"]
-DATA_YAML   = ["MCB", "RCD", "RCD_SI", "MAINBREAKER", "OVERSURGE", "OTHER"]
-
-# Every real annotation had to be rewritten through this map
+<span class="cm"># Every real annotation had to be rewritten through this map</span>
 REMAP = {written: DATA_YAML.index(name)
          for written, name in enumerate(CLASSES_TXT)}
-# -> {0: 1, 1: 0, 2: 3, 3: 4, 4: 5, 5: 2}
+<span class="cm"># -&gt; {0: 1, 1: 0, 2: 3, 3: 4, 4: 5, 5: 2}</span>
 
-# Synthetic labels were generated programmatically against data.yaml,
-# so they were correct all along -- which is exactly why the bug hid:
-# the corrupted subset was small enough to look like ordinary noise.</code></pre>
-
-            <p>Scored against corrected labels, that same 92% became roughly <strong>6%</strong>. The metric had never measured accuracy; it measured agreement with a broken ground truth.</p>
-
-            <div class="alert-box">
-                <h4>The Ablation That Removed My Own Work</h4>
-                <p>With the labels fixed, the slicing optimisation was re-run as a controlled ablation rather than assumed to help. It measurably <em>reduced</em> accuracy, so it was cut from the production pipeline. The dependency is still listed in <code>requirements.txt</code>, annotated with why it is deliberately unused — so nobody, including a future me, re-adds it on intuition without re-running the experiment.</p>
+<span class="cm"># Synthetic labels were generated programmatically against data.yaml,</span>
+<span class="cm"># so they were correct all along -- which is exactly why the bug hid:</span>
+<span class="cm"># the corrupted subset was small enough to look like ordinary noise.</span></pre>
             </div>
 
-            <h2>3. Synthetic Data Engineering</h2>
-            <p>With only 80+ high-resolution physical images, training a deep neural network was susceptible to overfitting. We built a custom synthetic pipeline that crops individual breakers, generates alpha masks, and pastes them in random configurations on various electrical panel backgrounds, expanding the training library by 10x.</p>
+            <p>Scored against corrected labels, that same 92% became roughly 6%. The metric had never measured accuracy. It measured agreement with a broken ground truth.</p>
 
-            <h2>4. DevOps & Containerized Deployment</h2>
-            <p>To demonstrate production-grade reliability, the PanelSafe inference API is containerized using <strong>Docker</strong> and deployed as a microservice. A local CI/CD pipeline runs unit tests, verifies linting compliance, and pushes the built container.</p>
+            <div class="table">
+                <div class="table__row table__row--head">
+                    <div class="table__head">Configuration</div>
+                    <div class="table__head table__head--num">mAP@50</div>
+                    <div class="table__head table__head--num">&#916;</div>
+                </div>
+                <div class="table__row">
+                    <div class="table__cell">Baseline, scored against the original labels</div>
+                    <div class="table__num">92</div>
+                    <div class="table__num table__num--nil">&#8212;</div>
+                </div>
+                <div class="table__row">
+                    <div class="table__cell">Same weights, scored against corrected labels</div>
+                    <div class="table__num">~6</div>
+                    <div class="table__num table__num--down">&#8722;86</div>
+                </div>
+                <div class="table__row">
+                    <div class="table__cell">Retrained on corrected labels</div>
+                    <div class="table__num">[X.X]</div>
+                    <div class="table__num">[+X.X]</div>
+                </div>
+                <div class="table__row">
+                    <div class="table__cell">+ slice-based inference <span class="table__note">(removed)</span></div>
+                    <div class="table__num">[X.X]</div>
+                    <div class="table__num table__num--down">[&#8722;X.X]</div>
+                </div>
+                <div class="table__row table__row--total">
+                    <div class="table__cell">Production pipeline (+ spatial layer, HMM/Viterbi)</div>
+                    <div class="table__num">[X.X]</div>
+                    <div class="table__num">[+X.X]</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <aside class="remark remark--flag">
+                <div class="remark__key">To fill in</div>
+                <p>Bracketed cells are placeholders. Pull the real figures from the ablation harness before this goes live &#8212; this table is the most credible thing on the site and it has to be exact.</p>
+            </aside>
+        </div>
+    </section>
 
-            <div class="code-header">Dockerfile</div>
-            <pre><code>FROM python:3.10-slim
+    <!-- ==================== 3.0 ==================== -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">3.0</span></div>
+        <div>
+            <h2>The ablation that removed my own work</h2>
+            <p>With the labels fixed, the slicing optimisation was re-run as a controlled ablation rather than assumed to help. Breakers are small objects in a wide frame, so tiling is the textbook move and I had already written it.</p>
+            <p>It measurably reduced accuracy, so it was cut from the production pipeline. Tiling severs the rail context that the spatial layer and the sequence decoder both depend on, and merge artefacts at tile boundaries split single wide devices in two. The dependency is still listed in <code>requirements.txt</code>, annotated with why it is deliberately unused &#8212; so that nobody, including a future me, re-adds it on intuition without re-running the experiment.</p>
+        </div>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Remark</div>
+                <p>An optimisation that is obviously correct and measurably wrong is the most expensive kind. The harness exists so the argument is settled by a number rather than by whoever is most confident.</p>
+            </aside>
+        </div>
+    </section>
 
+    <!-- ==================== 4.0 ==================== -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">4.0</span></div>
+        <div>
+            <h2>Eighty photographs, and a generator to make them behave like eight hundred</h2>
+            <p>The primary dataset is 80+ high-resolution field captures, all mine, all annotated by someone who can read the device markings. That is enough to prove a concept and nowhere near enough to train a detector that generalises across board layouts.</p>
+            <p>So the annotation bottleneck got engineered around rather than paid for. The synthetic pipeline crops annotated devices out of real panels, generates alpha masks to strip the original background, and pastes them back onto empty panel backgrounds in randomised configurations. Labels come out of the paste operation for free, because the pipeline knows what it placed and where. The training library expanded roughly tenfold.</p>
+            <p>The synthetic set teaches the model what a breaker looks like in arbitrary company. The real set teaches it what a breaker looks like under a hallway bulb.</p>
+        </div>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Pipeline</div>
+                <div class="steps">crop &#8595;<br>alpha mask &#8595;<br>rail-layout paste &#8595;<br>auto-label &#8595;<br>train</div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ==================== 5.0 ==================== -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">5.0</span></div>
+        <div>
+            <h2>A DIN rail has grammar, so the decoder should too</h2>
+            <p>A detector returns independent boxes with independent confidences. A breaker board is not independent. Devices sit on a rail in sequence, they occupy whole module widths, and the sequence obeys rules &#8212; a residual-current device protects the branches downstream of it, the main disconnect comes first, ratings descend in a particular way.</p>
+            <p>So detections pass through a spatial heuristic layer that snaps them to rail geometry and module boundaries, then through an HMM whose states are device types and whose transitions encode that physical grammar. Viterbi selects the most probable legal sequence rather than the highest-scoring independent set. A confident wrong device that violates the rail&#8217;s logic loses to a less confident device that fits.</p>
+            <p>This is the part that does not come out of a paper. It is domain knowledge encoded as a prior, and it is available to me because I have wired the boards.</p>
+        </div>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Downstream</div>
+                <p>The decoded sequence is what <a href="unifilar_case_study.html">PanelSafe Unifilar</a> compiles into a regulatory single-line diagram. The grammar is what makes that compilation possible at all.</p>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ==================== 6.0 ==================== -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">6.0</span></div>
+        <div>
+            <h2>Inference as a service, not a notebook</h2>
+            <p>The inference API is containerised and deployed as a microservice on my own hardware &#8212; Proxmox with GPU passthrough underneath, Kubernetes above. A CI pipeline lints, runs the unit tests, and builds the container on every push to main.</p>
+
+            <div class="listing">
+                <div class="listing__name">Dockerfile</div>
+<pre>FROM python:3.10-slim
 WORKDIR /app
 
-# Install system utilities for OpenCV
-RUN apt-get update && apt-get install -y \
+<span class="cm"># System libraries OpenCV links against</span>
+RUN apt-get update &amp;&amp; apt-get install -y \
     libgl1-mesa-glx \
     libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -221,53 +240,56 @@ COPY src/ ./src/
 COPY models/ ./models/
 
 EXPOSE 8000
-
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]</code></pre>
-
-            <div class="code-header">.github/workflows/deploy.yml</div>
-            <pre><code>name: Build and Deploy Inference Service
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  lint-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install Linting & Testing Libraries
-        run: |
-          pip install flake8 pytest
-          pip install -r requirements.txt
-
-      - name: Lint Python Code
-        run: flake8 src/
-
-      - name: Run Unit Tests
-        run: pytest tests/
-
-  build-container:
-    needs: lint-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Build Docker Image
-        run: docker build -t panelsafe-inference:latest .</code></pre>
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]</pre>
+            </div>
         </div>
-    </main>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Remark</div>
+                <p>Self-hosted on purpose. Owning the path from photograph to served prediction is the difference between a model and a product, and it is cheaper than renting GPUs to find that out.</p>
+            </aside>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026. Built by Eric McNeel — Technical Founder & Systems Builder.</p>
-    </footer>
+    <!-- ==================== 7.0 ==================== -->
+    <section class="row row--doc doc-section doc-section--last">
+        <div><span class="desig doc-section__num">7.0</span></div>
+        <div>
+            <h2>Shipping the honest version</h2>
+            <p>Field testing still shows domain drift on panels with the cover off, where exposed wire nests dominate the frame, and on boards whose markings are handwritten, faded or absent. That is a data problem with a data answer, not a reason to retune the loss function.</p>
+            <p>So rather than hold the product until full automation works, panelsafe.cv is live and free, EU-hosted, running human-in-the-loop risk scoring. The model proposes, the electrician confirms or corrects, and every correction is a labelled field example drawn from exactly the distribution the model is weakest on.</p>
+            <p>It is a data-collection instrument disguised as a useful free tool, and it is the only route I can see from eighty photographs to a corpus that supports full automation. Target for that is 2027.</p>
+
+            <p class="doc-nav">
+                <a href="https://panelsafe.cv" target="_blank" rel="noopener noreferrer">panelsafe.cv &#8599;</a>
+                <a href="https://github.com/cerrmcneel/breaker-detection-project" target="_blank" rel="noopener noreferrer">Repository &#8599;</a>
+                <a href="unifilar_case_study.html">Next: Unifilar &#8594;</a>
+            </p>
+        </div>
+        <div></div>
+    </section>
+
+</main>
+
+<footer class="titleblock">
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Drawn by</div>
+        <div class="titleblock__val">E. McNeel</div>
+    </div>
+    <div class="titleblock__cell titleblock__cell--wide">
+        <div class="titleblock__key">Subject</div>
+        <div class="titleblock__val">Case study 01 &#8212; PanelSafe breaker detection</div>
+    </div>
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Revision</div>
+        <div class="titleblock__val">2026.08</div>
+    </div>
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Sheet</div>
+        <div class="titleblock__val">02 of 04</div>
+    </div>
+</footer>
+
+<script src="../js/portfolio.js"></script>
 </body>
 </html>

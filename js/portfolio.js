@@ -1,74 +1,60 @@
+/* Eric McNeel — portfolio
+ *
+ * Deliberately almost nothing. The design does not depend on script:
+ * with JS disabled the nav is a plain list of links and every section
+ * is reachable. Two behaviours only.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Header Scroll Shadow & Blur Effect
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(7, 9, 14, 0.9)';
-            header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-        } else {
-            header.style.background = 'rgba(7, 9, 14, 0.75)';
-            header.style.boxShadow = 'none';
-        }
-    });
 
-    // 2. Active Link Highlighting on Scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav ul li a');
+    /* 1. Collapsed nav on narrow viewports. The button is hidden by CSS
+     *    above 620px, so this is inert on desktop. */
+    const toggle = document.querySelector('.nav__toggle');
+    const nav = document.getElementById('nav');
 
-    window.addEventListener('scroll', () => {
-        let currentSectionId = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120; // offset header height
-            const sectionHeight = section.offsetHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSectionId = section.getAttribute('id');
-            }
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            const open = nav.getAttribute('data-open') === 'true';
+            nav.setAttribute('data-open', String(!open));
+            toggle.setAttribute('aria-expanded', String(!open));
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').endsWith(`#${currentSectionId}`)) {
-                link.classList.add('active');
+        // Close after jumping to a section.
+        nav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                nav.setAttribute('data-open', 'false');
+                toggle.setAttribute('aria-expanded', 'false');
             }
-        });
-    });
-
-    // 3. Dynamic Glow Parallax Background on Hero
-    const hero = document.getElementById('hero');
-    if (hero) {
-        hero.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const { width, height } = hero.getBoundingClientRect();
-            const xPercent = (clientX / width) * 100;
-            const yPercent = (clientY / height) * 100;
-            
-            // Adjust the radial gradient center slightly based on cursor
-            hero.style.background = `
-                radial-gradient(circle at ${15 + (xPercent * 0.1)}% ${25 + (yPercent * 0.1)}%, rgba(99, 102, 241, 0.09) 0%, transparent 45%),
-                radial-gradient(circle at ${85 - (xPercent * 0.1)}% ${75 - (yPercent * 0.1)}%, rgba(16, 185, 129, 0.09) 0%, transparent 45%),
-                var(--bg-primary)
-            `;
         });
     }
 
-    // 4. Smooth Scrolling for Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                const headerOffset = 80;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    /* 2. Mark the section currently in view. IntersectionObserver rather
+     *    than a scroll handler — no work on frames where nothing crossed. */
+    const sections = document.querySelectorAll('main section[id]');
+    const links = new Map();
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
+    document.querySelectorAll('.nav a[href^="#"]').forEach((a) => {
+        links.set(a.getAttribute('href').slice(1), a);
     });
+
+    if (sections.length && links.size && 'IntersectionObserver' in window) {
+        const seen = new Set();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    seen.add(entry.target.id);
+                } else {
+                    seen.delete(entry.target.id);
+                }
+            });
+
+            links.forEach((a, id) => {
+                a.removeAttribute('aria-current');
+                if (seen.has(id)) { a.setAttribute('aria-current', 'true'); }
+            });
+        }, { rootMargin: '-45% 0px -45% 0px' });
+
+        sections.forEach((section) => observer.observe(section));
+    }
 });

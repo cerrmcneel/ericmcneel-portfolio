@@ -1,225 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eric McNeel | Machine Learning Engineer & Certified Electrician</title>
-    
-    <!-- SEO Optimization Meta Tags -->
-    <meta name="description" content="Portfolio of a Systems Builder, Certified Electrician, and Machine Learning Engineer. Deploying computer vision pipelines, MLOps, solar systems, and automation.">
-    <meta name="keywords" content="Machine Learning Engineer, Computer Vision, YOLO, PyTorch, MLOps, Electrician, Renewable Energy, Solar Estimator, Systems Builder">
-    <meta name="author" content="Eric McNeel — Technical Founder & Systems Builder">
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Google Fonts for Modern Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eric McNeel — Computer Vision for Electrical Infrastructure</title>
+
+<meta name="description" content="Certified electrician under Spanish REBT building computer vision systems for electrical infrastructure. PanelSafe breaker detection, UNE-EN 60617 schematic generation, and containerised GPU inference.">
+<meta name="author" content="Eric McNeel">
+<link rel="canonical" href="https://ericmcneel.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Eric McNeel — Computer Vision for Electrical Infrastructure">
+<meta property="og:description" content="Certified electrician under Spanish REBT building computer vision systems for electrical infrastructure.">
+<meta property="og:url" content="https://ericmcneel.com/">
+<meta property="og:image" content="https://ericmcneel.com/assets/projects/panelsafe-detection-field.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Eric McNeel",
+  "url": "https://ericmcneel.com/",
+  "email": "ericmcneel@gmail.com",
+  "jobTitle": "Machine Learning Engineer / Computer Vision Developer",
+  "knowsLanguage": ["en", "es"],
+  "knowsAbout": ["Computer Vision", "Object Detection", "MLOps", "Electrical Installation", "REBT", "Synthetic Data Generation"],
+  "sameAs": [
+    "https://github.com/cerrmcneel",
+    "https://www.linkedin.com/in/eric-mcneel-450759a4/",
+    "https://panelsafe.cv"
+  ]
+}
+</script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Eric McNeel<span class="logo-dot"></span></div>
-            <ul>
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#communication">Communication</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <div class="hero-badge-container">
-                    <span class="badge purple">Computer Vision / MLOps</span>
-                    <span class="badge">Systems Builder</span>
-                    <span class="badge green">Certified Electrician</span>
-                </div>
-                <h1>Bridging Physical Systems & Artificial Intelligence</h1>
-                <p class="hero-subtext">Technical Founder and Certified Electrician deploying custom Computer Vision models, solar-calculators, and automated industrial audits to solve high-value physical bottlenecks.</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn primary-purple">View AI/ML flagships</a>
-                    <a href="projects/electromarjal_case_study.html" class="btn secondary">See Electrical installations build</a>
-                </div>
-            </div>
-        </section>
+<a class="skip" href="#main">Skip to content</a>
 
-        <!-- Project Spotlight Section -->
-        <section id="projects" class="section container">
-            <h2 class="section-title">Spotlight Builds</h2>
-            <div class="projects-grid">
-                <!-- Project 1: PanelSafe -->
-                <div class="project-card purple">
-                    <div class="project-header">
-                        <span class="project-icon">🧠</span>
-                        <span class="badge purple">Flagship AI</span>
-                    </div>
-                    <img src="assets/projects/panelsafe-bounding-box-analysis.png" alt="PanelSafe analysis UI showing bounding-box detection of RCD and MCB breakers on a real panel" class="project-image">
-                    <div>
-                        <h3>PanelSafe: Automated Breaker Auditing</h3>
-                        <p class="project-description">A custom YOLO-based detection pipeline that automates electrical breaker-board audits, trained on a bespoke synthetic data generator built to bypass the manual annotation bottleneck. Raw detections are refined by a spatial heuristic layer and an HMM/Viterbi decoder that applies the physical grammar of a DIN rail. Built with an ablation harness — which is how the intuitive slicing-based optimisation was measured, shown to reduce accuracy, and removed.</p>
-                        <ul class="tag-list">
-                            <li>Python</li>
-                            <li>YOLOv8 / YOLO26</li>
-                            <li>PyTorch</li>
-                            <li>HMM / Viterbi</li>
-                            <li>OpenCV</li>
-                            <li>Docker</li>
-                            <li>Kubernetes</li>
-                            <li>Proxmox GPU Passthrough</li>
-                        </ul>
-                    </div>
-                    <div class="project-footer">
-                        <a href="projects/panelsafe_case_study.html" class="project-link">Read Case Study &rarr;</a>
-                        <a href="https://panelsafe.cv" class="project-link" target="_blank" rel="noopener noreferrer">Visit panelsafe.cv &nearr;</a>
-                    </div>
-                </div>
+<header class="masthead">
+    <span class="wordmark">Eric McNeel</span>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav">Index</button>
+    <nav class="nav" id="nav">
+        <a href="#work">Work</a>
+        <a href="#profile">Profile</a>
+        <a href="#contact">Contact</a>
+        <a class="nav__cv" href="mailto:ericmcneel@gmail.com?subject=CV%20request">CV &#8599;</a>
+    </nav>
+</header>
+<hr class="rule">
 
-                <!-- Project 2: electromarjal.com -->
-                <div class="project-card green">
-                    <div class="project-header">
-                        <span class="project-icon">⚡</span>
-                        <span class="badge green">Physical & Web Systems</span>
-                    </div>
-                    <img src="assets/projects/electromarjal-solar-calculator.svg" alt="Electromarjal interactive solar savings calculator wizard and real-time amortization estimation" class="project-image">
-                    <div>
-                        <h3>electromarjal.com: High-End Solar Estimator</h3>
-                        <p class="project-description">The commercial solar and electrical installations platform for Marjal Instalaciones Eléctricas SL. Features an interactive, client-side solar calculator wizard, multilingual routing (ES/EN/FR) for expat conversion, and structured local SEO.</p>
-                        <ul class="tag-list">
-                            <li>HTML5 / CSS3</li>
-                            <li>Vanilla JS</li>
-                            <li>Local SEO</li>
-                            <li>JSON-LD Schema</li>
-                            <li>Docker</li>
-                            <li>Nginx</li>
-                        </ul>
-                    </div>
-                    <div class="project-footer">
-                        <a href="projects/electromarjal_case_study.html" class="project-link">Read Case Study &rarr;</a>
-                        <a href="https://electromarjal.com" class="project-link" target="_blank" rel="noopener noreferrer">Visit electromarjal.com &nearr;</a>
-                    </div>
-                </div>
+<main id="main">
 
-                <!-- Project 3: PanelSafe Unifilar -->
-                <div class="project-card amber">
-                    <div class="project-header">
-                        <span class="project-icon">🧩</span>
-                        <span class="badge amber">Applied CV / Client-Side CAD</span>
-                    </div>
-                    <img src="assets/projects/panelsafe-unifilar-diagram.svg" alt="Generated UNE-EN 60617 Single Line Diagram from PanelSafe Unifilar CAD engine" class="project-image">
-                    <div>
-                        <h3>PanelSafe Unifilar: Detection Output &rarr; Compliant Schematic</h3>
-                        <p class="project-description">Converts raw YOLO detections into a hierarchical electrical single-line diagram rendered with the UNE-EN 60617 symbol library. Fully client-side editing with live re-render, and vector PDF / PNG export for regulatory submission.</p>
-                        <ul class="tag-list">
-                            <li>JavaScript</li>
-                            <li>SVG</li>
-                            <li>Vector PDF export</li>
-                            <li>UNE-EN 60617</li>
-                            <li>Detection post-processing</li>
-                        </ul>
-                    </div>
-                    <div class="project-footer">
-                        <a href="projects/unifilar_case_study.html" class="project-link">Read Case Study &rarr;</a>
-                        <a href="https://panelsafe.cv/unifilar/" class="project-link" target="_blank" rel="noopener noreferrer">Open the live tool &nearr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section container">
-            <h2 class="section-title">Professional Trajectory</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>I operate at the intersection of complex physical infrastructure and modern software intelligence. As a <strong>Certified Electrician</strong> under Spanish REBT regulations and an autonomous <strong>Technical Founder</strong>, I build software not in a vacuum, but to streamline and automate real-world industrial systems.</p>
-                    
-                    <p>My transition into <strong>Data Science, Computer Vision, and MLOps</strong> was born out of a desire to solve high-value bottlenecks in the electrical industry. By translating physical field experience into robust datasets and scalable containerized inference services, I build production-ready software solutions.</p>
-                    
-                    <p>I focus on designing custom data pipeline engineering, object detection, synthetic data generation, and home-lab GPU orchestration (Proxmox/Kubernetes) to ensure that machine learning models perform reliably in real-world environments.</p>
-                </div>
-                <div class="profile-card">
-                    <h3 class="profile-title">Developer Metadata</h3>
-                    <div class="profile-details">
-                        <div class="profile-item">
-                            <label>Citizenship</label>
-                            <span>Dual United States & Irish (EU) — Work Legal in US/UK/Eurozone</span>
-                        </div>
-                        <div class="profile-item">
-                            <label>US Remote Framework</label>
-                            <span>W2/1099 compliant, state-side residential nexus, US banking ready</span>
-                        </div>
-                        <div class="profile-item">
-                            <label>Core Stack</label>
-                            <span>Python, YOLO, PyTorch, SQL, Docker, Kubernetes, Linux</span>
-                        </div>
-                        <div class="profile-item">
-                            <label>Languages</label>
-                            <span>English (Native) & Spanish (Bilingual)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Systems Storytelling & Communication Section -->
-        <section id="communication" class="section container">
-            <h2 class="section-title">Systems Storytelling</h2>
-            <div class="communication-card">
-                <div class="communication-info">
-                    <h3>Technical Communication & Content Creation</h3>
-                    <p>Building high-performing systems is only half the battle; explaining them is the other. My background as an <strong>ESL Teacher</strong> trained me to translate complex, technical rules into structured, easy-to-understand explanations for diverse audiences.</p>
-                    <p>This skill extends into environmental systems building. On my YouTube channel, <strong>Marxa Garden</strong>, I documented the conversion of dry family land in Spain into a self-sustaining Mediterranean garden using permaculture and water-conservation principles. This required deep planning, public speaking, and technical storytelling to explain agricultural systems to a global audience.</p>
-                    <div class="cta-buttons" style="justify-content: flex-start;">
-                        <a href="https://www.youtube.com/@marxagarden" target="_blank" rel="noopener noreferrer" class="btn secondary">
-                            <span>Visit @marxagarden</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="youtube-side">
-                    <a href="https://www.youtube.com/@marxagarden" target="_blank" rel="noopener noreferrer" class="youtube-wrapper" aria-label="Watch Marxa Garden on YouTube">
-                        <div class="youtube-mock-bg"></div>
-                        <div class="youtube-play-btn"></div>
-                        <div class="youtube-channel-name">
-                            <div class="youtube-channel-logo">M</div>
-                            <span>Marxa Garden — Land Transformation</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-container">
-                <p>Looking for a Machine Learning Engineer, Computer Vision Developer, or Technical Partner to build robust data pipelines and systems?</p>
-                <div class="contact-card">
-                    <h3>Available for Local & Remote Opportunities</h3>
-                    <p>Operating out of Spain with ready-to-go W2/1099 compliance for US companies, or local/remote EU contracts.</p>
-                    <div class="contact-methods">
-                        <a href="mailto:ericmcneel@gmail.com" class="contact-btn">✉️ Email Me</a>
-                        <a href="https://www.linkedin.com/in/eric-mcneel-450759a4/" target="_blank" rel="noopener noreferrer" class="contact-btn">💼 LinkedIn Profile</a>
-                        <a href="https://github.com/cerrmcneel" target="_blank" rel="noopener noreferrer" class="contact-btn">🐙 GitHub Repositories</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-logo">Eric McNeel<span class="logo-dot"></span></div>
-            <p>&copy; 2026. Built by Eric McNeel — Technical Founder & Systems Builder.</p>
+    <!-- ==================== HERO ==================== -->
+    <section class="row row--wide hero">
+        <div><span class="desig">00</span></div>
+        <div>
+            <h1>Computer vision for electrical infrastructure, built by the person who wires the panels.</h1>
+            <p class="hero__sub">I am a certified electrician under Spanish REBT regulation who moved into machine learning to automate the audits I had been doing by hand. My training data comes from panels I opened myself, and my failure cases come from job sites rather than a validation split.</p>
+            <p class="hero__avail"><span>Open to ML / CV roles &#183; Remote US, EU, UK &#183; Hybrid Spain</span></p>
         </div>
-    </footer>
+    </section>
 
-    <!-- Interactive Logic Script -->
-    <script src="js/portfolio.js"></script>
+    <hr class="rule">
+
+    <!-- ==================== WORK ==================== -->
+    <section id="work">
+        <div class="row row--wide section-head">
+            <div></div>
+            <h2 class="label">Selected work</h2>
+        </div>
+
+        <!-- 01 PanelSafe -->
+        <article class="row project">
+            <div><span class="desig">01</span></div>
+
+            <div>
+                <h2>PanelSafe</h2>
+                <p class="project__lede">Breaker-board auditing from a single photograph.</p>
+
+                <p class="project__body">A YOLO detection pipeline trained on a proprietary field dataset and scaled tenfold by a synthetic generator that crops annotated breakers, masks their backgrounds, and re-pastes them onto rail geometry in new arrangements. Detections are then refined by a spatial heuristic layer and an HMM/Viterbi decoder that applies the physical grammar of a DIN rail.</p>
+
+                <p class="project__body">The interesting part is what went wrong. The model scored 92% and was visibly wrong in the field, confidently calling residual-current devices MCBs. The cause was a six-class rotation between the annotation tool&#8217;s <code>classes.txt</code> and the <code>data.yaml</code> training actually read; the model had faithfully learned the permutation. Rescored against corrected labels, that 92% was roughly 6%. The metric had never measured accuracy. It measured agreement with a broken ground truth.</p>
+
+                <div class="spec">
+                    <div class="spec__row">
+                        <div class="spec__key">Role</div>
+                        <div class="spec__val">Sole engineer &#8212; dataset, training, post-processing, deployment</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Stack</div>
+                        <div class="spec__val">Python &#183; YOLOv8 &#183; PyTorch &#183; OpenCV &#183; Docker &#183; Kubernetes &#183; Proxmox</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Data</div>
+                        <div class="spec__val">80+ field-captured panels, self-sourced &#183; synthetic pipeline, 10&#215; expansion</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Status</div>
+                        <div class="spec__val spec__val--status">Live at panelsafe.cv &#8212; human-in-the-loop scoring while field data is collected</div>
+                    </div>
+                </div>
+
+                <p class="project__links">
+                    <a href="projects/panelsafe_case_study.html">Case study</a>
+                    <a href="https://panelsafe.cv" target="_blank" rel="noopener noreferrer">panelsafe.cv &#8599;</a>
+                    <a href="https://github.com/cerrmcneel/breaker-detection-project" target="_blank" rel="noopener noreferrer">Repository &#8599;</a>
+                </p>
+            </div>
+
+            <figure class="fig">
+                <div class="fig__frame">
+                    <img src="assets/projects/panelsafe-detection-field.jpg" width="927" height="694" alt="Field photograph of a residential consumer unit with bounding boxes drawn over one FISO residual-current device and four MEDEX miniature circuit breakers">
+                </div>
+                <figcaption class="fig__cap">Fig. 01 &#8212; RCD and MCB detection on a field-captured residential panel. Unedited inference output.</figcaption>
+            </figure>
+        </article>
+
+        <hr class="rule--hair">
+
+        <!-- 02 Unifilar -->
+        <article class="row project">
+            <div><span class="desig">02</span></div>
+
+            <div>
+                <h2>PanelSafe Unifilar</h2>
+                <p class="project__lede">Detection output to a schematic an inspector will accept.</p>
+
+                <p class="project__body">Every electrical certificate filed in Spain legally requires a single-line diagram conforming to UNE-EN 60617 and ITC-BT-25. Drawing one by hand in generic CAD costs an installer thirty to forty-five minutes per board, back at the office, disconnected from the panel they just audited.</p>
+
+                <p class="project__body">This engine takes the structured device sequence from the rail decoder and procedurally compiles it into vector SVG in under 500 milliseconds &#8212; symbols constructed mathematically rather than stamped from a library, with dynamic multi-pole rendering, a computed load schedule (cross-sections, conduit diameters, calculated power per REBT tables), and vector PDF export for regulatory submission.</p>
+
+                <div class="spec">
+                    <div class="spec__row">
+                        <div class="spec__key">Role</div>
+                        <div class="spec__val">Sole engineer &#8212; topology inference, symbol engine, vector export</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Stack</div>
+                        <div class="spec__val">JavaScript &#183; SVG &#183; vector PDF &#183; shorthand DSL with live re-render</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Standard</div>
+                        <div class="spec__val">UNE-EN 60617 &#183; ITC-BT-25 &#8212; the symbol set Spanish inspection actually uses</div>
+                    </div>
+                </div>
+
+                <p class="project__links">
+                    <a href="projects/unifilar_case_study.html">Case study</a>
+                    <a href="https://panelsafe.cv/unifilar/" target="_blank" rel="noopener noreferrer">Live tool &#8599;</a>
+                </p>
+            </div>
+
+            <figure class="fig">
+                <div class="fig__frame">
+                    <img src="assets/projects/panelsafe-unifilar-diagram.svg" width="1160" height="930" alt="Generated single-line electrical diagram showing service entrance, main disconnect, surge protection, residual current devices and branch circuits" loading="lazy">
+                </div>
+                <figcaption class="fig__cap">Fig. 02 &#8212; Generated single-line diagram, UNE-EN 60617. Compiled from a detected device sequence.</figcaption>
+            </figure>
+        </article>
+
+        <hr class="rule--hair">
+
+        <!-- 03 Electromarjal -->
+        <article class="row project">
+            <div><span class="desig">03</span></div>
+
+            <div>
+                <h2>electromarjal.com</h2>
+                <p class="project__lede">The commercial platform for the installation business that funds the research.</p>
+
+                <p class="project__body">Built and operated for Marjal Instalaciones El&#233;ctricas SL in the Maestrat comarca, where the customer base splits three ways: Spanish residents, English expatriates, and French retirees. Static subdirectory routing serves all three without a client-side framework, and JSON-LD <code>Electrician</code> schema pins the address, geo-coordinates and service area for local search.</p>
+
+                <p class="project__body">A client-side solar estimator takes a homeowner from monthly bill and roof type to an amortisation figure without a callback or a database round trip &#8212; irradiance coefficients for the Castell&#243;n coast, system loss applied, results serialised into a formatted enquiry.</p>
+
+                <div class="spec">
+                    <div class="spec__row">
+                        <div class="spec__key">Role</div>
+                        <div class="spec__val">Founder and sole developer &#8212; also the person on the roof</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Stack</div>
+                        <div class="spec__val">Vanilla JS &#183; JSON-LD &#183; local SEO &#183; Docker &#183; Nginx</div>
+                    </div>
+                </div>
+
+                <p class="project__links">
+                    <a href="projects/electromarjal_case_study.html">Case study</a>
+                    <a href="https://electromarjal.com" target="_blank" rel="noopener noreferrer">electromarjal.com &#8599;</a>
+                </p>
+            </div>
+
+            <div></div>
+        </article>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ==================== PROFILE ==================== -->
+    <section id="profile">
+        <div class="row row--wide section-head">
+            <div></div>
+            <h2 class="label">Profile</h2>
+        </div>
+
+        <div class="row row--body">
+            <div><span class="desig">04</span></div>
+
+            <div>
+                <p class="prose">I run electrical installations as an aut&#243;nomo in Spain, and I am consolidating that work into an S.L. that pairs premium installation and renewables with the software I write for it. The software is not a side project. It exists because I kept doing the same audit by hand.</p>
+                <p class="prose">That order of operations is the whole argument for hiring me. I did not learn computer vision and then look for a domain. I had the domain, the access, and a bottleneck expensive enough to justify solving, and I went and got the machine learning. It means I can label my own data correctly, I know which failure modes matter on a real job site, and I can tell the difference between a model that scores well and a model that works.</p>
+                <p class="prose">I train and deploy on my own hardware &#8212; Proxmox with GPU passthrough, Kubernetes for inference services &#8212; so I own the full path from a photograph on site to a container serving a prediction.</p>
+            </div>
+
+            <div class="spec spec--tight spec--flush">
+                <div class="spec__row">
+                    <div class="spec__key">Authorisation</div>
+                    <div class="spec__val">Dual US and Irish (EU) citizen. No sponsorship required in the US, UK or Eurozone.</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">US hiring</div>
+                    <div class="spec__val">W2 or 1099. State-side residential address and US banking already in place.</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Base</div>
+                    <div class="spec__val">Spain. Remote-first, hybrid locally.</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Languages</div>
+                    <div class="spec__val">English (native) &#183; Spanish (bilingual)</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Certified</div>
+                    <div class="spec__val">Electrician under REBT (Spain)</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Training</div>
+                    <div class="spec__val">Ironhack Data Science, 2026 &#183; DataCamp Associate Data Scientist &#183; McKinsey Forward</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="row row--last">
+        <div></div>
+        <div>
+            <h2 class="label">Contact</h2>
+            <p class="contact__statement">If you are building vision systems that have to survive contact with the physical world, we should talk.</p>
+            <p class="contact__links">
+                <a href="mailto:ericmcneel@gmail.com">ericmcneel@gmail.com</a>
+                <a href="https://www.linkedin.com/in/eric-mcneel-450759a4/" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+                <a href="https://github.com/cerrmcneel" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+            </p>
+        </div>
+        <div>
+            <div class="spec__key">Elsewhere</div>
+            <p class="elsewhere">I document the conversion of dry family land into a Mediterranean water-conservation garden at <a href="https://www.youtube.com/@marxagarden" target="_blank" rel="noopener noreferrer">Marxa Garden</a>. Years of teaching English before this; explaining systems is the part I never had to learn.</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- H5 — title block -->
+<footer class="titleblock">
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Drawn by</div>
+        <div class="titleblock__val">E. McNeel</div>
+    </div>
+    <div class="titleblock__cell titleblock__cell--wide">
+        <div class="titleblock__key">Subject</div>
+        <div class="titleblock__val">Portfolio &#8212; machine learning, computer vision, electrical systems</div>
+    </div>
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Revision</div>
+        <div class="titleblock__val">2026.08</div>
+    </div>
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Sheet</div>
+        <div class="titleblock__val">01 of 04</div>
+    </div>
+</footer>
+
+<script src="js/portfolio.js"></script>
 </body>
 </html>

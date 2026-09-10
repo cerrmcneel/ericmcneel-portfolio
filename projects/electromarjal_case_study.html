@@ -1,240 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>electromarjal.com Case Study | Eric McNeel Portfolio</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Specific page additions */
-        body {
-            font-family: var(--font-body);
-        }
-        .container-narrow {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            transition: color 0.3s;
-        }
-        .back-link:hover {
-            color: var(--text-primary);
-        }
-        h1.title {
-            font-size: 3rem;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .meta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1.5rem 0;
-            margin: 2rem 0 3rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .meta-item strong {
-            display: block;
-            color: var(--text-primary);
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-        .rich-content h2 {
-            font-size: 1.75rem;
-            margin: 3rem 0 1.25rem;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 0.5rem;
-        }
-        .rich-content p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        .rich-content ul {
-            list-style-position: inside;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-        }
-        .rich-content li {
-            margin-bottom: 0.5rem;
-        }
-        /* Code styling */
-        pre {
-            background: #141721;
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 1.5rem 0 2rem;
-        }
-        code {
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-        }
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #1e2230;
-            border: 1px solid var(--glass-border);
-            border-bottom: none;
-            padding: 0.5rem 1rem;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 1.5rem;
-            font-family: 'Fira Code', monospace;
-        }
-        .code-header + pre {
-            margin-top: 0;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-        .alert-box {
-            background: rgba(16, 185, 129, 0.05);
-            border-left: 4px solid var(--accent-green);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin: 2rem 0;
-        }
-        .alert-box h4 {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-family: var(--font-heading);
-        }
-        .alert-box p {
-            margin-bottom: 0;
-            font-size: 0.95rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>electromarjal.com — Eric McNeel</title>
+
+<meta name="description" content="A trilingual conversion platform for a Spanish electrical and solar installer: static multilingual routing, JSON-LD local SEO, and a client-side solar savings estimator.">
+<meta name="author" content="Eric McNeel">
+<link rel="canonical" href="https://ericmcneel.com/projects/electromarjal_case_study.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="electromarjal.com: a trilingual platform for a Spanish installer">
+<meta property="og:description" content="Static multilingual routing, JSON-LD local SEO, and a client-side solar savings estimator.">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Eric McNeel<span class="logo-dot"></span></div>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#projects">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="container-narrow">
-        <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
-        
-        <h1 class="title">electromarjal.com: High-End Solar & Electrical Platform</h1>
-        <p class="hero-subtext">Architecting a multi-lingual, high-performance customer conversion portal for a premium electrical services provider in Spain.</p>
+<a class="skip" href="#main">Skip to content</a>
 
-        <div class="meta-grid">
-            <div class="meta-item">
-                <strong>Role</strong>
-                Full Stack Developer & Owner
-            </div>
-            <div class="meta-item">
-                <strong>Stack</strong>
-                HTML5, CSS3, JavaScript (Vanilla), JSON-LD, Docker
-            </div>
-            <div class="meta-item">
-                <strong>Target Audience</strong>
-                Spanish Locals, English Expats, French Retirees
+<header class="masthead">
+    <a class="wordmark" href="../index.html">&#8592;&#8195;Eric McNeel</a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav">Index</button>
+    <nav class="nav" id="nav">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="nav__cv" href="mailto:ericmcneel@gmail.com?subject=CV%20request">CV &#8599;</a>
+    </nav>
+</header>
+<hr class="rule">
+
+<main id="main">
+
+    <article class="row row--doc doc-head">
+        <div><span class="desig">03</span></div>
+        <div>
+            <p class="label">Case study</p>
+            <h1>electromarjal.com: one platform, three languages, no framework</h1>
+            <p class="doc-head__sub">The commercial site for Marjal Instalaciones El&#233;ctricas SL &#8212; built for a region where the customer might be Spanish, English or French, and the connection might be poor.</p>
+        </div>
+        <div>
+            <div class="spec spec--head">
+                <div class="spec__row">
+                    <div class="spec__key">Role</div>
+                    <div class="spec__val">Founder and sole developer</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Stack</div>
+                    <div class="spec__val">HTML5 &#183; CSS3 &#183; vanilla JS &#183; JSON-LD &#183; Docker &#183; Nginx</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Audience</div>
+                    <div class="spec__val">Spanish residents, English expatriates, French retirees</div>
+                </div>
+                <div class="spec__row">
+                    <div class="spec__key">Status</div>
+                    <div class="spec__val spec__val--status">In service</div>
+                </div>
             </div>
         </div>
+    </article>
 
-        <div class="rich-content">
-            <h2>1. Business Context & Engineering Challenge</h2>
-            <p>To support the transition from Sole Proprietorship (Autónomo) to a Limited Company (S.L.) structure, Marjal Instalaciones Eléctricas required a digital presence matching its high-end physical services. The target region (the Maestrat comarca: Peñíscola, Benicarló, Vinaròs) is uniquely multi-demographic, requiring seamless Spanish (ES), English (EN), and French (FR) availability to convert residential owners, foreign property investors, and French-speaking retirees.</p>
-            
-            <div class="alert-box">
-                <h4>Strict REBT & Local Regulatory Context</h4>
-                <p>Electrical safety documentation in Spain requires strict adherence to REBT (Reglamento Electrotécnico para Baja Tensión) regulations. Highlighting official certifications (such as Boletines CIE) with clear fixed pricing structures was crucial to building instant consumer trust online.</p>
-            </div>
+    <hr class="rule--hair">
 
-            <h2>2. Multi-Lingual Architecture & Local SEO</h2>
-            <p>To minimize hosting overhead and maximize page-speed scores for mobile-first users in low-connectivity areas, we selected a clean semantic framework over bloated client-side JavaScript frameworks. We structured multi-lingual pages using static subdirectory routing (e.g. <code>/en/index.html</code>) to ensure clean crawler indexes.</p>
-            <p>To capture local Google Search visibility, we embedded custom Schema.org metadata using JSON-LD. This explicitly defines the physical address, geo-coordinates, operating hours, and area served, telling search engines precisely when and where the services operate.</p>
+    <!-- 1.0 -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">1.0</span></div>
+        <div>
+            <h2>A region with three customer bases</h2>
+            <p>The Maestrat comarca &#8212; Pe&#241;&#237;scola, Benicarl&#243;, Vinar&#242;s &#8212; is unusually multi-demographic for its size. Residential work comes from Spanish locals, foreign property investors buying second homes, and French-speaking retirees. A single-language site loses two thirds of the enquiries before the first call.</p>
+            <p>The site also had to carry the transition from aut&#243;nomo to S.L.: a premium physical service needed a digital presence that matched it, with official certifications and fixed pricing visible up front, because trust in this trade is established before anyone picks up a phone.</p>
+        </div>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Remark</div>
+                <p>Spanish electrical documentation is governed by REBT. Showing the CIE certification prominently is not decoration &#8212; it is the fastest available proof that the installer can legally sign off the work.</p>
+            </aside>
+        </div>
+    </section>
 
-            <div class="code-header">Structured Data (index.html)</div>
-            <pre><code>{
-  "@context": "https://schema.org",
-  "@type": "Electrician",
-  "name": "Marjal Instalaciones Eléctricas SL",
-  "telephone": "+34 684 17 31 15",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Zona Maestrat",
-    "addressLocality": "Peñíscola",
-    "addressRegion": "Castellón",
-    "postalCode": "12598",
-    "addressCountry": "ES"
+    <!-- 2.0 -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">2.0</span></div>
+        <div>
+            <h2>Static routing beats a framework here</h2>
+            <p>Mobile-first users in low-connectivity areas do not benefit from a client-side router. Languages are served as static subdirectories &#8212; <code>/en/index.html</code>, <code>/fr/index.html</code> &#8212; which gives crawlers a clean index per language and gives the visitor a document that renders before any script runs.</p>
+            <p>For local search visibility the pages carry Schema.org <code>Electrician</code> metadata in JSON-LD, declaring the physical address, geo-coordinates, hours and area served, so search engines know precisely where the service operates rather than inferring it.</p>
+
+            <div class="listing">
+                <div class="listing__name">index.html &#8212; structured data</div>
+<pre>{
+  <span class="cm">"@context"</span>: <span class="cm">"https://schema.org"</span>,
+  <span class="cm">"@type"</span>: <span class="cm">"Electrician"</span>,
+  <span class="cm">"name"</span>: <span class="cm">"Marjal Instalaciones Electricas SL"</span>,
+  <span class="cm">"address"</span>: {
+    <span class="cm">"@type"</span>: <span class="cm">"PostalAddress"</span>,
+    <span class="cm">"addressLocality"</span>: <span class="cm">"Peniscola"</span>,
+    <span class="cm">"addressRegion"</span>: <span class="cm">"Castellon"</span>,
+    <span class="cm">"postalCode"</span>: <span class="cm">"12598"</span>,
+    <span class="cm">"addressCountry"</span>: <span class="cm">"ES"</span>
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.3582,
-    "longitude": 0.4069
+  <span class="cm">"geo"</span>: {
+    <span class="cm">"@type"</span>: <span class="cm">"GeoCoordinates"</span>,
+    <span class="cm">"latitude"</span>: 40.3582,
+    <span class="cm">"longitude"</span>: 0.4069
   }
-}</code></pre>
+}</pre>
+            </div>
+        </div>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Remark</div>
+                <p>No build step, no hydration, no bundle. The whole site is documents and a stylesheet, served by Nginx from a container.</p>
+            </aside>
+        </div>
+    </section>
 
-            <h2>3. Interactive Solar Savings Estimator Wizard</h2>
-            <p>To capture premium solar leads, we built a step-by-step wizard. Users slide their average monthly electricity bill, select their roofing type, and receive a real-time technical estimate. Instead of forcing database interactions, the calculator performs instant client-side math and serializes user details into formatted emails.</p>
+    <!-- 3.0 -->
+    <section class="row row--doc doc-section">
+        <div><span class="desig doc-section__num">3.0</span></div>
+        <div>
+            <h2>The estimator answers the only question that matters</h2>
+            <p>Solar enquiries stall on one question: what will I actually save. Answering it normally requires a site visit and a callback, which is where most leads are lost.</p>
+            <p>So the site estimates it in the browser. The visitor gives their average monthly bill and roof type; the calculator applies peak-sun-hour and system-loss coefficients for the Castell&#243;n coast and returns a system size and amortisation figure immediately, then serialises the inputs into a formatted enquiry. No database, no round trip, no account.</p>
 
-            <div class="code-header">calculator_logic.js</div>
-            <pre><code>// Solar Calculation Coefficients based on average solar irradiance in Castellón
-const AVERAGE_PEAK_SUN_HOURS = 4.6; // hours/day in East Coast Spain
-const SYSTEM_EFFICIENCY_LOSS = 0.82; // 18% standard system loss
+            <div class="listing">
+                <div class="listing__name">calculator_logic.js</div>
+<pre><span class="cm">// Coefficients for average solar irradiance, east coast Spain</span>
+const AVERAGE_PEAK_SUN_HOURS = 4.6;   <span class="cm">// hours/day</span>
+const SYSTEM_EFFICIENCY_LOSS = 0.82;  <span class="cm">// 18% standard system loss</span>
 
 function calculateSolarOutput(monthlyBill) {
-    // 1. Est. Monthly consumption in kWh (assuming average price of 0.20€/kWh)
-    const monthlyKwh = monthlyBill / 0.20;
-    const dailyKwhTarget = (monthlyKwh / 30) * 0.70; // Target covering 70% daytime load
-    
-    // 2. Required system size in kWp
-    const requiredKwp = dailyKwhTarget / (AVERAGE_PEAK_SUN_HOURS * SYSTEM_EFFICIENCY_LOSS);
-    
-    // 3. Number of standard panels (assuming 450Wp per panel)
-    const numPanels = Math.ceil((requiredKwp * 1000) / 450);
-    
-    // 4. Payback period estimate (assuming standard installation costs)
-    const estimatedCost = numPanels * 750 + 1500; // 750€ per panel + inverter/labor setup
-    const annualSavings = (monthlyKwh * 12 * 0.70) * 0.20; // 70% bill reduction
-    const paybackYears = (estimatedCost / annualSavings).toFixed(1);
-    
-    return {
-        kWp: requiredKwp.toFixed(2),
-        panels: numPanels,
-        cost: estimatedCost,
-        payback: paybackYears
-    };
-}</code></pre>
-
-            <h2>4. Containerized Web Hosting</h2>
-            <p>For hosting robustness, the site, assets, and calculator utilities are containerized using <strong>Docker</strong> and proxy-routed via an Nginx service. This setup is managed through <code>docker-compose</code> on the local platform, matching the infrastructure configuration used in PanelSafe's deployment.</p>
+    <span class="cm">// Estimated monthly consumption at ~0.20 EUR/kWh</span>
+    const monthlyKwh     = monthlyBill / 0.20;
+    <span class="cm">// Target covering 70% of daytime demand</span>
+    const dailyKwhTarget = (monthlyKwh / 30) * 0.70;
+    ...
+}</pre>
+            </div>
         </div>
-    </main>
+        <div>
+            <aside class="remark">
+                <div class="remark__key">Remark</div>
+                <p>An estimate given instantly and honestly converts better than a precise one given three days later. The figure is presented as an estimate, and the site visit still happens &#8212; after the customer is already interested.</p>
+            </aside>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026. Built by Eric McNeel — Technical Founder & Systems Builder.</p>
-    </footer>
+    <!-- 4.0 -->
+    <section class="row row--doc doc-section doc-section--last">
+        <div><span class="desig doc-section__num">4.0</span></div>
+        <div>
+            <h2>Why this sits in a machine learning portfolio</h2>
+            <p>Because it is the business that funds the research, and because it is where the data comes from. Every installation and audit carried out under this company is a potential field capture for <a href="panelsafe_case_study.html">PanelSafe</a>. The commercial work and the computer vision work are the same operation viewed from two ends.</p>
+
+            <p class="doc-nav">
+                <a href="https://electromarjal.com" target="_blank" rel="noopener noreferrer">electromarjal.com &#8599;</a>
+                <a href="unifilar_case_study.html">&#8592; Previous: Unifilar</a>
+                <a href="../index.html">Back to index</a>
+            </p>
+        </div>
+        <div></div>
+    </section>
+
+</main>
+
+<footer class="titleblock">
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Drawn by</div>
+        <div class="titleblock__val">E. McNeel</div>
+    </div>
+    <div class="titleblock__cell titleblock__cell--wide">
+        <div class="titleblock__key">Subject</div>
+        <div class="titleblock__val">Case study 03 &#8212; electromarjal.com</div>
+    </div>
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Revision</div>
+        <div class="titleblock__val">2026.08</div>
+    </div>
+    <div class="titleblock__cell">
+        <div class="titleblock__key">Sheet</div>
+        <div class="titleblock__val">04 of 04</div>
+    </div>
+</footer>
+
+<script src="../js/portfolio.js"></script>
 </body>
 </html>
