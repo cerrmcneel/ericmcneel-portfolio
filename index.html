@@ -198,6 +198,88 @@
 
             <div></div>
         </article>
+
+        <hr class="rule--hair">
+
+        <!-- 04 Hermes -->
+        <article class="row project">
+            <div><span class="desig">04</span></div>
+
+            <div>
+                <h2>Hermes</h2>
+                <p class="project__lede">A containerised agent loop, and the failure mode that made it necessary.</p>
+
+                <p class="project__body">An autonomous coding agent that runs sandboxed in its own container against local models served by Ollama. File operations are bounded to a single writable workspace with the harness schemas mounted read-only; when the agent needs a human it posts a clarification card to a review queue rather than guessing. A stuck-loop detector watches for repeated tool-call signatures and no-op edits and trips a circuit breaker before the run burns its budget.</p>
+
+                <p class="project__body">It exists because of a benchmark result. Run against the real tool schemas, <code>qwen3-coder:30b</code> emitted its tool calls as prose &#8212; <code>&lt;function=&#8230;&gt;</code> in the message body &#8212; which the chat template silently dropped. The loop saw an empty <code>tool_calls</code> array, read that as the model having finished, and reported completed work it had never done. The same shape as the PanelSafe label bug: a green result agreeing with the wrong thing. Two fixes came out of it &#8212; scan message content for unparsed call markers and fail loudly, and stop assuming a bigger model is a better one. Re-running the three failing probes under fixed temperature and thinking settings scored 0 of 45, never once correct and never once varying, so it was not sampling noise.</p>
+
+                <div class="spec">
+                    <div class="spec__row">
+                        <div class="spec__key">Role</div>
+                        <div class="spec__val">Sole engineer &#8212; loop design, sandboxing, model benchmarking</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Stack</div>
+                        <div class="spec__val">Python &#183; Pydantic &#183; Ollama &#183; Docker &#183; pytest &#183; uv</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Benchmark</div>
+                        <div class="spec__val">Four local models scored on tool selection against live schemas &#183; <code>devstral:24b</code> the only one to pass all four probes, at a sixth the throughput</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Status</div>
+                        <div class="spec__val spec__val--status">Draft entry &#8212; project under active redesign</div>
+                    </div>
+                </div>
+
+                <p class="project__links">
+                    <a href="https://github.com/cerrmcneel/Hermes_deploy" target="_blank" rel="noopener noreferrer">Repository &#8599;</a>
+                </p>
+            </div>
+
+            <div></div>
+        </article>
+
+        <hr class="rule--hair">
+
+        <!-- 05 Health Suite -->
+        <article class="row project">
+            <div><span class="desig">05</span></div>
+
+            <div>
+                <h2>Health Suite</h2>
+                <p class="project__lede">Five paid subscriptions replaced by one service on the home network.</p>
+
+                <p class="project__body">A self-hosted nutrition and training tracker built as an installable progressive web app over a FastAPI and SQLite backend, running on my own hardware behind Nginx with no cloud dependency, no account, and no telemetry. A local vision model estimates ingredients and macros from a photograph of a meal, which keeps food images &#8212; the part of this data people are least comfortable uploading &#8212; on the LAN.</p>
+
+                <p class="project__body">The retrieval layer is the part worth reading: SQLite FTS5 doing BM25 ranking over a curated set of nutrition-science articles, fused with the user&#8217;s own weight, targets and intake before synthesis, so an answer about protein intake cites their numbers rather than generic guidance. Elsewhere, a ghost-overlay viewfinder composites the previous session&#8217;s photo over the live camera and an auto-align pass centres subjects by computed centroid, because progress photos are worthless if the framing drifts.</p>
+
+                <div class="spec">
+                    <div class="spec__row">
+                        <div class="spec__key">Role</div>
+                        <div class="spec__val">Sole engineer &#8212; API, retrieval, front end, deployment</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Stack</div>
+                        <div class="spec__val">Python &#183; FastAPI &#183; SQLite FTS5 &#183; Ollama &#183; vanilla JS &#183; Docker &#183; Nginx</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Deployment</div>
+                        <div class="spec__val">Containerised on local hardware &#183; TLS provisioning and autostart scripted &#183; offline-first service worker</div>
+                    </div>
+                    <div class="spec__row">
+                        <div class="spec__key">Status</div>
+                        <div class="spec__val spec__val--status">Draft entry &#8212; project under active redesign</div>
+                    </div>
+                </div>
+
+                <p class="project__links">
+                    <a href="https://github.com/cerrmcneel/health_app" target="_blank" rel="noopener noreferrer">Repository &#8599;</a>
+                </p>
+            </div>
+
+            <div></div>
+        </article>
     </section>
 
     <hr class="rule">
@@ -210,7 +292,7 @@
         </div>
 
         <div class="row row--body">
-            <div><span class="desig">04</span></div>
+            <div><span class="desig">06</span></div>
 
             <div>
                 <p class="prose">I run electrical installations as an aut&#243;nomo in Spain, and I am consolidating that work into an S.L. that pairs premium installation and renewables with the software I write for it. The software is not a side project. It exists because I kept doing the same audit by hand.</p>
