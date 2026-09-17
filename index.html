@@ -242,17 +242,17 @@
 
         <hr class="rule--hair">
 
-        <!-- 05 Health Suite -->
+        <!-- 05 LocalPulse -->
         <article class="row project">
             <div><span class="desig">05</span></div>
 
             <div>
-                <h2>Health Suite</h2>
-                <p class="project__lede">Five paid subscriptions replaced by one service on the home network.</p>
+                <h2>LocalPulse</h2>
+                <p class="project__lede">Five fitness subscriptions replaced by one service that never leaves the house.</p>
 
-                <p class="project__body">A self-hosted nutrition and training tracker built as an installable progressive web app over a FastAPI and SQLite backend, running on my own hardware behind Nginx with no cloud dependency, no account, and no telemetry. A local vision model estimates ingredients and macros from a photograph of a meal, which keeps food images &#8212; the part of this data people are least comfortable uploading &#8212; on the LAN.</p>
+                <p class="project__body">A self-hosted nutrition, training and progress tracker for a whole household, built as an installable progressive web app over FastAPI and SQLite and deployed on my homelab behind Nginx. No build step, no external CDN, no telemetry. A local vision model estimates macros from a meal photograph, and nutrition questions are answered by SQLite FTS5 ranking curated sports-science articles with BM25, fused with the user&#8217;s own targets before synthesis. Everything else works with the model switched off: the workout designer falls back to a deterministic generator that never prescribes equipment the profile does not own.</p>
 
-                <p class="project__body">The retrieval layer is the part worth reading: SQLite FTS5 doing BM25 ranking over a curated set of nutrition-science articles, fused with the user&#8217;s own weight, targets and intake before synthesis, so an answer about protein intake cites their numbers rather than generic guidance. Elsewhere, a ghost-overlay viewfinder composites the previous session&#8217;s photo over the live camera and an auto-align pass centres subjects by computed centroid, because progress photos are worthless if the framing drifts.</p>
+                <p class="project__body">The engineering is in the boundaries. Python&#8217;s SQLite driver blocks, so database handlers run in the thread pool, and no async handler awaits the model while holding a connection. Every query is scoped to a profile, and backup export writes an isolated database containing only the requester&#8217;s rows. That isolation is tested rather than assumed: the suite covers cross-profile access, per-profile PINs and export scope.</p>
 
                 <div class="spec">
                     <div class="spec__row">
@@ -261,15 +261,15 @@
                     </div>
                     <div class="spec__row">
                         <div class="spec__key">Stack</div>
-                        <div class="spec__val">Python &#183; FastAPI &#183; SQLite FTS5 &#183; Ollama &#183; vanilla JS &#183; Docker &#183; Nginx</div>
+                        <div class="spec__val">Python &#183; FastAPI &#183; SQLite (WAL, FTS5) &#183; Ollama &#183; vanilla JS &#183; Docker &#183; Nginx</div>
                     </div>
                     <div class="spec__row">
                         <div class="spec__key">Deployment</div>
-                        <div class="spec__val">Containerised on local hardware &#183; TLS provisioning and autostart scripted &#183; offline-first service worker</div>
+                        <div class="spec__val">Docker Compose on a homelab Linux VM &#183; image built by GitHub Actions &#183; offline-first service worker</div>
                     </div>
                     <div class="spec__row">
                         <div class="spec__key">Status</div>
-                        <div class="spec__val spec__val--status">Draft entry &#8212; project under active redesign</div>
+                        <div class="spec__val spec__val--status">In daily use on the home network &#8212; open source, AGPL-3.0</div>
                     </div>
                 </div>
 
