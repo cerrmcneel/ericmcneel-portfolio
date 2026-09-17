@@ -84,7 +84,7 @@
                 <h2>PanelSafe</h2>
                 <p class="project__lede">Breaker-board auditing from a single photograph.</p>
 
-                <p class="project__body">A YOLO detection pipeline trained on a proprietary field dataset and scaled tenfold by a synthetic generator that crops annotated breakers, masks their backgrounds, and re-pastes them onto rail geometry in new arrangements. Detections are then refined by a spatial heuristic layer and an HMM/Viterbi decoder that applies the physical grammar of a DIN rail.</p>
+                <p class="project__body">A YOLO detection pipeline trained on a proprietary field dataset and scaled tenfold by a synthetic generator that crops annotated breakers, masks their backgrounds, and re-pastes them onto rail geometry in new arrangements. A spatial heuristic layer then groups detections into rails and snaps them to module widths. An HMM/Viterbi decoder encoding rail grammar was built too, and cut when held-out real photographs showed it lowered accuracy.</p>
 
                 <p class="project__body">The interesting part is what went wrong. The model scored 92% and was visibly wrong in the field, confidently calling residual-current devices MCBs. The cause was a six-class rotation between the annotation tool&#8217;s <code>classes.txt</code> and the <code>data.yaml</code> training actually read; the model had faithfully learned the permutation. Rescored against corrected labels, that 92% was roughly 6%. The metric had never measured accuracy. It measured agreement with a broken ground truth.</p>
 
@@ -95,7 +95,7 @@
                     </div>
                     <div class="spec__row">
                         <div class="spec__key">Stack</div>
-                        <div class="spec__val">Python &#183; YOLOv8 &#183; PyTorch &#183; OpenCV &#183; Docker &#183; Kubernetes &#183; Proxmox</div>
+                        <div class="spec__val">Python &#183; YOLO26 &#183; PyTorch &#183; OpenCV &#183; Docker &#183; Kubernetes &#183; Proxmox</div>
                     </div>
                     <div class="spec__row">
                         <div class="spec__key">Data</div>
@@ -134,7 +134,7 @@
 
                 <p class="project__body">Every electrical certificate filed in Spain legally requires a single-line diagram conforming to UNE-EN 60617 and ITC-BT-25. Drawing one by hand in generic CAD costs an installer thirty to forty-five minutes per board, back at the office, disconnected from the panel they just audited.</p>
 
-                <p class="project__body">This engine takes the structured device sequence from the rail decoder and procedurally compiles it into vector SVG in under 500 milliseconds &#8212; symbols constructed mathematically rather than stamped from a library, with dynamic multi-pole rendering, a computed load schedule (cross-sections, conduit diameters, calculated power per REBT tables), and vector PDF export for regulatory submission.</p>
+                <p class="project__body">This engine takes the ordered device sequence from the detection pipeline and procedurally compiles it into vector SVG in under 500 milliseconds &#8212; symbols constructed mathematically rather than stamped from a library, with dynamic multi-pole rendering, a computed load schedule (cross-sections, conduit diameters, calculated power per REBT tables), and vector PDF export for regulatory submission.</p>
 
                 <div class="spec">
                     <div class="spec__row">

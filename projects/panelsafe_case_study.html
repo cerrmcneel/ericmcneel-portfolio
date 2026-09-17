@@ -58,7 +58,7 @@
                 </div>
                 <div class="spec__row">
                     <div class="spec__key">Stack</div>
-                    <div class="spec__val">Python &#183; YOLOv8 &#183; PyTorch &#183; OpenCV &#183; Docker &#183; Kubernetes &#183; Proxmox</div>
+                    <div class="spec__val">Python &#183; YOLO26 &#183; PyTorch &#183; OpenCV &#183; Docker &#183; Kubernetes &#183; Proxmox</div>
                 </div>
                 <div class="spec__row">
                     <div class="spec__key">Status</div>
@@ -124,43 +124,50 @@ REMAP = {written: DATA_YAML.index(name)
 
             <p>Scored against corrected labels, that same 92% became roughly 6%. The metric had never measured accuracy. It measured agreement with a broken ground truth.</p>
 
+            <p>Once the labels were fixed, every candidate addition went through the same harness against the same 42 held-out real photographs. None of these numbers comes from the synthetic set.</p>
+
             <div class="table">
                 <div class="table__row table__row--head">
                     <div class="table__head">Configuration</div>
-                    <div class="table__head table__head--num">mAP@50</div>
-                    <div class="table__head table__head--num">&#916;</div>
+                    <div class="table__head table__head--num">Recall</div>
+                    <div class="table__head table__head--num">Class. acc.</div>
                 </div>
                 <div class="table__row">
-                    <div class="table__cell">Baseline, scored against the original labels</div>
-                    <div class="table__num">92</div>
+                    <div class="table__cell">YOLO26 Nano, corrected labels (baseline)</div>
+                    <div class="table__num">79.3</div>
+                    <div class="table__num">61.7</div>
+                </div>
+                <div class="table__row">
+                    <div class="table__cell">+ HMM/Viterbi sequence corrector <span class="table__note">(cut)</span></div>
                     <div class="table__num table__num--nil">&#8212;</div>
+                    <div class="table__num table__num--down">55.9</div>
                 </div>
                 <div class="table__row">
-                    <div class="table__cell">Same weights, scored against corrected labels</div>
-                    <div class="table__num">~6</div>
-                    <div class="table__num table__num--down">&#8722;86</div>
+                    <div class="table__cell">+ two-stage crop classifier <span class="table__note">(cut)</span></div>
+                    <div class="table__num table__num--nil">&#8212;</div>
+                    <div class="table__num table__num--down">3.6</div>
                 </div>
                 <div class="table__row">
-                    <div class="table__cell">Retrained on corrected labels</div>
-                    <div class="table__num">[X.X]</div>
-                    <div class="table__num">[+X.X]</div>
+                    <div class="table__cell">Mixup and scale augmentation tuning <span class="table__note">(reverted)</span></div>
+                    <div class="table__num table__num--nil">&#8212;</div>
+                    <div class="table__num table__num--down">56.4</div>
                 </div>
                 <div class="table__row">
-                    <div class="table__cell">+ slice-based inference <span class="table__note">(removed)</span></div>
-                    <div class="table__num">[X.X]</div>
-                    <div class="table__num table__num--down">[&#8722;X.X]</div>
+                    <div class="table__cell">YOLO26 Large</div>
+                    <div class="table__num">82.7</div>
+                    <div class="table__num">62.8</div>
                 </div>
                 <div class="table__row table__row--total">
-                    <div class="table__cell">Production pipeline (+ spatial layer, HMM/Viterbi)</div>
-                    <div class="table__num">[X.X]</div>
-                    <div class="table__num">[+X.X]</div>
+                    <div class="table__cell">Production: YOLO26 Medium, single stage, spatial layer</div>
+                    <div class="table__num">84.2</div>
+                    <div class="table__num">60.7</div>
                 </div>
             </div>
         </div>
         <div>
-            <aside class="remark remark--flag">
-                <div class="remark__key">To fill in</div>
-                <p>Bracketed cells are placeholders. Pull the real figures from the ablation harness before this goes live &#8212; this table is the most credible thing on the site and it has to be exact.</p>
+            <aside class="remark">
+                <div class="remark__key">Reading the table</div>
+                <p>Percentages on held-out real images. Recall was not re-measured for the post-processing variants. Classification differences of a point or two are within run-to-run noise on roughly 300 boxes, so recall chose the production model: a missed device is invisible to the human reviewer, a misclassified one is not.</p>
             </aside>
         </div>
     </section>
@@ -171,7 +178,7 @@ REMAP = {written: DATA_YAML.index(name)
         <div>
             <h2>The ablation that removed my own work</h2>
             <p>With the labels fixed, the slicing optimisation was re-run as a controlled ablation rather than assumed to help. Breakers are small objects in a wide frame, so tiling is the textbook move and I had already written it.</p>
-            <p>It measurably reduced accuracy, so it was cut from the production pipeline. Tiling severs the rail context that the spatial layer and the sequence decoder both depend on, and merge artefacts at tile boundaries split single wide devices in two. The dependency is still listed in <code>requirements.txt</code>, annotated with why it is deliberately unused &#8212; so that nobody, including a future me, re-adds it on intuition without re-running the experiment.</p>
+            <p>It measurably reduced accuracy, so it was cut from the production pipeline. Tiling severs the rail context that the spatial layer depends on, and merge artefacts at tile boundaries split single wide devices in two. The dependency is still listed in <code>requirements.txt</code>, annotated with why it is deliberately unused &#8212; so that nobody, including a future me, re-adds it on intuition without re-running the experiment.</p>
         </div>
         <div>
             <aside class="remark">
@@ -202,15 +209,15 @@ REMAP = {written: DATA_YAML.index(name)
     <section class="row row--doc doc-section">
         <div><span class="desig doc-section__num">5.0</span></div>
         <div>
-            <h2>A DIN rail has grammar, so the decoder should too</h2>
+            <h2>A DIN rail has grammar. Encoding it made the model worse.</h2>
             <p>A detector returns independent boxes with independent confidences. A breaker board is not independent. Devices sit on a rail in sequence, they occupy whole module widths, and the sequence obeys rules &#8212; a residual-current device protects the branches downstream of it, the main disconnect comes first, ratings descend in a particular way.</p>
-            <p>So detections pass through a spatial heuristic layer that snaps them to rail geometry and module boundaries, then through an HMM whose states are device types and whose transitions encode that physical grammar. Viterbi selects the most probable legal sequence rather than the highest-scoring independent set. A confident wrong device that violates the rail&#8217;s logic loses to a less confident device that fits.</p>
-            <p>This is the part that does not come out of a paper. It is domain knowledge encoded as a prior, and it is available to me because I have wired the boards.</p>
+            <p>So I built what that reasoning suggests: an HMM whose states are device types and whose transitions encode the grammar, with Viterbi choosing the most probable legal sequence rather than the highest-scoring independent set. It passed its unit tests. On real photographs it cut classification accuracy from 61.7% to 55.9% and made inference six times slower, so it is switched off in production.</p>
+            <p>The grammar is real; the prior was stronger than the boards. Installers do not follow convention as consistently as the regulations imply &#8212; even the best-case rule that the leftmost device is the main breaker is right only about 40% of the time on this dataset. What ships is the part that holds up: a spatial layer that groups detections into rails, snaps them to module widths and fills gaps in the grid. The conventions that do not hold are left for the human reviewer to flag.</p>
         </div>
         <div>
             <aside class="remark">
                 <div class="remark__key">Downstream</div>
-                <p>The decoded sequence is what <a href="unifilar_case_study.html">PanelSafe Unifilar</a> compiles into a regulatory single-line diagram. The grammar is what makes that compilation possible at all.</p>
+                <p>The ordered rail sequence is what <a href="unifilar_case_study.html">PanelSafe Unifilar</a> compiles into a regulatory single-line diagram.</p>
             </aside>
         </div>
     </section>

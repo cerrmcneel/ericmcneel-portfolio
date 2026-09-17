@@ -103,12 +103,12 @@
         <div>
             <h2>Detections have positions; a schematic needs topology</h2>
             <p>A detector tells you that there is a 40A two-pole device at these pixel coordinates. A diagram needs to know that it is the main disconnect, that the surge protector sits behind it, that the residual-current device downstream protects five branch circuits, and which of those branches is the kitchen.</p>
-            <p>The structured sequence produced by the YOLO and HMM/Viterbi rail decoder in <a href="panelsafe_case_study.html">PanelSafe</a> is exactly that missing topology. This engine consumes it and procedurally compiles a vector SVG diagram and technical load table in under 500 milliseconds.</p>
+            <p>The ordered device sequence produced by YOLO detection and the spatial rail layer in <a href="panelsafe_case_study.html">PanelSafe</a> is exactly that missing topology. This engine consumes it and procedurally compiles a vector SVG diagram and technical load table in under 500 milliseconds.</p>
         </div>
         <div>
             <aside class="remark">
                 <div class="remark__key">Upstream</div>
-                <p>The rail grammar encoded in the decoder is what makes topology recoverable from a photograph at all. Without it there is nothing here to compile.</p>
+                <p>Ordering devices along the rail is what makes topology recoverable from a photograph at all. Without it there is nothing here to compile.</p>
             </aside>
         </div>
     </section>
